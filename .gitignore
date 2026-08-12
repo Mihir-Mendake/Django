@@ -1,0 +1,85 @@
+
+# Python
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Virtual Environment
+
+../.venv/
+venv/
+env/
+ENV/
+
+
+# Django
+
+*.log
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Ignore collected static files (if you use collectstatic)
+staticfiles/
+
+
+# Environment Variables
+
+.env
+.env.*
+!.env.example
+
+
+# PyCharm
+
+.idea/
+
+
+# VS Code
+
+.vscode/
+
+# macOS
+
+.DS_Store
+
+
+# Windows
+
+Thumbs.db
+Desktop.ini
+
+
+# Python Packaging
+
+build/
+dist/
+*.egg-info/
+.eggs/
+
+
+# Testing
+
+.pytest_cache/
+.coverage
+htmlcov/
+
+
+# Type Checking
+
+.mypy_cache/
+.pyre/
+.pytype/
+
+
+# Jupyter
+
+.ipynb_checkpoints/
+
+
+# Misc
+
+*.swp
+*.swo
