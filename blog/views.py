@@ -8,7 +8,8 @@ blog_names = {
     "python-intro": "Python Post",
     "django-basics": "Django Blog Post",
     "python-oops": "Object Oriented Programming with Python",
-    "regex": "Regular Expression in Python"
+    "regex": "Regular Expression in Python",
+    "tkinter": None
 }
 
 
@@ -18,9 +19,13 @@ def home_page(request):
     # return HttpResponse(res_data)
 
 
+
+
 def blogposts(request):
     list_items = ""
     blog_list = list(blog_names.keys())
+
+    return render(request, "blog/allposts.html", {"blogs":blog_list})
     for b in blog_list:
         blog_path = reverse("blog-post", args=[b])
         list_items += f'<li><a href="{blog_path}">{b.capitalize()}</a></li>'
@@ -28,14 +33,20 @@ def blogposts(request):
     res_data =f"<ul>{list_items}</ul>"
     return HttpResponse(res_data)
 
+
+
 def process_blog_name(blog):
     blog_list = blog.split("-")
-    return " ".join(blog_list).title()
+    return " ".join(blog_list)
+
+
+
 
 def blog_post(request, blog):
     try:
        res = blog_names[blog]
-       return render(request, "blog/posts.html",{"blog_text":res , "blog_names":process_blog_name(blog)} )
+       return render(request, "blog/posts.html",
+                     {"blog_text":res , "blog_names":process_blog_name(blog)} )
     except Exception:
         return HttpResponseNotFound("<h1>Blog not found</h1>")
 

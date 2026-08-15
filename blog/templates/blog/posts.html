@@ -2,10 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ blog_names }}</title>
+    <title>{{ blog_names|title }}</title>
 </head>
 <body>
-       <h1>{{ blog_names }} Blog Post</h1>
-       <h2>{{ blog_text }}</h2>
+       <h1>{{ blog_names|title }} Blog Post</h1>
+       {% if blog_text %}
+           <h2>{{ blog_text }}</h2>
+       {% else %}
+           <h2>Blog is in progress....</h2>
+       {% endif %}
 </body>
 </html>
