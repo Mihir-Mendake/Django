@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block body_content %}
-    {% include "blog/includes/header.html" %}
+    {% include "blog/includes/header.html" with active_page="Posts" %}
+
        <h1>{{ blog_names|title }} Blog Post</h1>
        {% if blog_text %}
            <h2>{{ blog_text }}</h2>
