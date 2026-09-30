@@ -1,11 +1,69 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static 'blog/app.css' %}">
+{% endblock %}
+
 
 {% block page_title %}
-Our blog post home page
+    Our blog post home page
 {% endblock %}
 
 {% block body_content %}
-    {% include "./includes/header.html" %}
-      <h1>My personal blog post</h1>
-      <h2>I write about python and related stuff</h2>
+    <header>
+        <h1><a href =""></a>Home Page</h1>
+        <nav>
+            <a href ="" >All Posts</a>
+        </nav>
+    </header>
+    <section>
+        <header>
+            <h1>My personal blog post</h1>
+            <h2>I write about python and related stuff</h2>
+            <img src = "" alt="Author" />
+        </header>
+    </section>
+
+    <section>
+        <h2>Featured Posts</h2>
+        <ul>
+            <li>
+                <article>
+                    <a href ="">
+                        <img src="" alt="Python" />
+                        <div>
+                            <h3>Python Intro</h3>
+                            <p>
+                                Python is a high level programming language.
+                            </p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+            <li>
+                <article>
+                    <a href ="">
+                        <img src="" alt="Django" />
+                        <div>
+                            <h3>Django Basics</h3>
+                            <p>
+                                Django is a web framework in python.
+                            </p>
+                        </div>
+                    </a>
+                </article>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>About the Author</h2>
+        <p>The Author has 10+ experience in software and application development.
+        He also makes content on Python and Django.
+        </p>
+        <p>
+            Contact the author on contact@example.com
+        </p>
+    </section>
 {% endblock %}
