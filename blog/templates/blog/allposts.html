@@ -10,10 +10,11 @@ All Posts
 {% endblock %}
 
 {% block body_content %}
-    {% include "blog/includes/header.html" with active_page="All Posts" %}
-     <ul>
+    <section>
+        <h2>All My Post</h2>
          {% for blog in blogs %}
             <li><a href="{% url 'blog-post' blog=blog %}">{{ blog|capfirst }}</a></li>
          {% endfor %}
      </ul>
+    </section>
 {% endblock %}
