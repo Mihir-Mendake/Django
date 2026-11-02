@@ -12,8 +12,19 @@ All Posts
 {% block body_content %}
     <section>
         <h2>All My Post</h2>
+     <ul>
          {% for blog in blogs %}
-            <li><a href="{% url 'blog-post' blog=blog %}">{{ blog|capfirst }}</a></li>
+            <li>
+                <article>
+                    <a href="{% url 'blog-post' blog=blog.slug %}">{{ blog.title|capfirst }}</a>
+                    <img src="{% static 'blog/images/'|add:blog.image %}" alt="{{ blog.title|capfirst }}" />
+                    <div>
+                            <p>
+                                {{ blog.preview }}
+                            </p>
+                    </div>
+                </article>
+            </li>
          {% endfor %}
      </ul>
     </section>
