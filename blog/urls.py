@@ -8,7 +8,7 @@ from . import views
 
 urlpatterns = [
     path('',views.home_page, name="home"),
-    path('allposts', views.blogposts),
+    path('allposts', views.blogposts , name="all-posts"),
     #path("allposts/<int:blog>", views.blog_post_by_number),
     path("allposts/<slug:blog>",views.blog_post, name="blog-post"),
 
