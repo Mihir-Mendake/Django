@@ -23,19 +23,12 @@
         <h2>Featured Posts</h2>
         <ul>
             {% for blog in l_blogs %}
-            <li>
-                <article>
-                    <a href="{% url 'blog-post' blog=blog.slug %}">{{ blog.title|capfirst }}</a>
-                    <img src="{% static 'blog/images/'|add:blog.image %}" alt="{{ blog.title|capfirst }}" />
-                    <div>
-                             <p>
-                                {{ blog.preview }}
-                             </p>
-                    </div>
-                </article>
-            </li>
+               {% include 'blog/includes/posts.html' %}
             {% endfor %}
         </ul>
+    </section>
+
+    <section>
             <li>
                 <article>
                     <a href ="">
