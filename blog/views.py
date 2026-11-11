@@ -96,12 +96,17 @@ def process_blog_name(blog):
 
 
 
+def get_blog_by_slug(blog_url):
+    for blog in blog_details:
+        if blog["slug"] == blog_url:
+            return blog
+    return None
 
 def blog_post(request, blog):
     try:
-       res = blog_names[blog]
+       res = get_blog_by_slug(blog)
        return render(request, "blog/posts.html",
-                     {"blog_text":res , "blog_names":process_blog_name(blog)} )
+                     {"post":res})
     except Exception:
         raise Http404()
 

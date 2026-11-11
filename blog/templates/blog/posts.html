@@ -1,19 +1,22 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block page_title %}
-     {{ blog_names|title }}
+     {{Post.title}}
 {% endblock %}
 
 {% block body_content %}
-    {% include "blog/includes/header.html" with active_page="Posts" %}
+    <section>
+        <h2>{{post.title}}</h2>
+        <article>
+            <img src="{% static 'blog/images/'|add:post.image%}" alt ="{{post.title}}" />
+            <div>Posted on<time>{{post.date|date:"d M Y" }}</time></div>
+        </article>
+    </section>
 
-       <h1>{{ blog_names|title }} Blog Post</h1>
-       {% if blog_text %}
-           <h2>{{ blog_text }}</h2>
-       {% else %}
-           <h2>Blog is in progress....</h2>
-       {% endif %}
+    <main>
+        <p>{{post.content}}</p>
+    </main>
 {% endblock %}
 
 
