@@ -9,3 +9,4 @@ class Post(models.Model):
     date = models.DateTimeField(auto_now=True)
     slug = models.SlugField(unique=True)
     image = models.CharField(max_length=50)
+
