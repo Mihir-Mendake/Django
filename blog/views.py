@@ -27,7 +27,8 @@ def blogposts(request):
 def blog_post(request, blog):
     try:
        res = Post.objects.get(slug = blog)
+       tag_caption = res.tags.all()
        return render(request, "blog/posts.html",
-                     {"post":res})
+                     {"post":res, "tags":tag_caption})
     except Exception:
         raise Http404()
