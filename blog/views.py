@@ -1,16 +1,8 @@
 from django.shortcuts import render
 from django.http import Http404 , HttpResponseNotFound
-from django.urls import reverse
-from datetime import date
-from django.template.loader import render_to_string
 from .models import Post
 
 # Create your views here.
-
-blog_details = [
-
-]
-
 
 def home_page(request):
     latest_blogs = Post.objects.all().order_by("-date")[:2] #db
@@ -21,10 +13,8 @@ def home_page(request):
     # res_data = render_to_string("blog/index.html")
     # return HttpResponse(res_data)
 
-
-
-
 def blogposts(request):
+    blog_details = Post.objects.all()
     return render(request, "blog/allposts.html", {"blogs":blog_details})
 
     for b in blog_list:
@@ -34,47 +24,10 @@ def blogposts(request):
     res_data =f"<ul>{list_items}</ul>"
     return HttpResponse(res_data)
 
-
-
-def process_blog_name(blog):
-    blog_list = blog.split("-")
-    return " ".join(blog_list)
-
-
-
-def get_blog_by_slug(blog_url):
-    for blog in blog_details:
-        if blog["slug"] == blog_url:
-            return blog
-    return None
-
 def blog_post(request, blog):
     try:
-       res = get_blog_by_slug(blog)
+       res = Post.objects.get(slug = blog)
        return render(request, "blog/posts.html",
                      {"post":res})
     except Exception:
         raise Http404()
-
-
-
-
-
-# def blog_post_by_number(request, blog):
-#     return HttpResponse(blog)
-
-# if blog == "python_intro":
-    #     res = "<h1>Python Post</h1>"
-    # elif blog == "django_basics":
-    #     res = "<h1>Django Blog Post</h1>"
-    # elif blog == "python_oops":
-    #     res = "<h1>Object Oriented Programming with Python</h1>"
-    # else:
-
-# """
-# <ul>
-#     <li><a href="allposts/python_intro">Python Intro</a></li>
-#     <li><a href="allposts/python_oops">/a>Object Oriented Programming with Python</li>
-#     <li><a href="allposts/regex">Regular Expression in Python</a></li>
-# </ul>
-# """ used in blogpost
