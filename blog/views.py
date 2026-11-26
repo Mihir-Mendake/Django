@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import Http404 , HttpResponseNotFound
 from .models import Post
+from .Forms import CommentForm
 
 # Create your views here.
 
@@ -26,9 +27,10 @@ def blogposts(request):
 
 def blog_post(request, blog):
     try:
-       res = Post.objects.get(slug = blog)
-       tag_caption = res.tags.all()
+       post_data = Post.objects.get(slug = blog)
+       tag_caption = post_data.tags.all()
+       form_data = CommentForm()
        return render(request, "blog/posts.html",
-                     {"post":res, "tags":tag_caption})
+                     {"post":post_data, "tags":tag_caption, "comment_form":form_data})
     except Exception:
         raise Http404()
