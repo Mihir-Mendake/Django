@@ -34,4 +34,8 @@ class Post(models.Model):
     tags = models.ManyToManyField(Tag)
 
 
-
+class Comment(models.Model):
+    user_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    comment_text = models.TextField(max_length=500)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
